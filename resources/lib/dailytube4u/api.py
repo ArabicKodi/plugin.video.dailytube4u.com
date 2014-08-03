@@ -8,4 +8,3 @@ class DailyTube4uAPI():
 
     def get_clips_for_show(self, show_path):
         return get_clips_for_show(show_path)
-
