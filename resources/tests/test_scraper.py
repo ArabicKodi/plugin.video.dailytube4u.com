@@ -43,7 +43,7 @@ class TestSubCategoryParsing(unittest.TestCase):
     def test_parse_with_no_thumb(self):
         sample_category = bs4.BeautifulSoup(
             u'<div class="videoBox"><div class="video-card"><div class="video-data"><a class="categorylink" href="/talkshow/monaw3/">other shows</a></div></div></div>')
-        expected = SubCategory('other shows', '/talkshow/monaw3/')
+        expected = SubCategory('other shows', '/talkshow/monaw3/', 'Dummy')
 
         actual = parse_sub_category(sample_category)
         self.assertEqual(actual.title, expected.title, 'Sub category titles match')
