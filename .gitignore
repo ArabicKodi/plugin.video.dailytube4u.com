@@ -1,2 +1,6 @@
+# File Extensions
 *.pyc
+*.zip
+
+# IDE's
 .idea
