@@ -10,22 +10,22 @@ from resources.lib.dailytube4u.scraper import *
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), '../..'))
 
 
-# class TestScraper(unittest.TestCase):
-#     PATH_TALKSHOW = '/talkshows'
-#     URL_QAHERA_AL_YAWM = 'http://www.dailytube4u.com/alqahera-alyoum/#catViewSubVideos'
-#
-#     def test_read_dailytube_homepage(self):
-#         content = read_dailytube_homepage()
-#         self.assertTrue(len(content) > 0, 'DailyTube4U.com homepage is up and running')
-#
-#     def test_channels(self):
-#         channels = get_channels()
-#         self.assertGreaterEqual(len(channels), 0, 'More than 0 channels are always returned')
-#
-#     def test_category_sub_categories(self):
-#         sub_categories = get_sub_categories(self.PATH_TALKSHOW)
-#         self.assertGreaterEqual(len(sub_categories), 10,
-#                                 'At least more than 10 talkshow sub categories are always returned')
+class TestScraper(unittest.TestCase):
+    PATH_TALKSHOW = '/talkshows'
+    URL_QAHERA_AL_YAWM = 'http://www.dailytube4u.com/alqahera-alyoum/#catViewSubVideos'
+
+    def test_read_dailytube_homepage(self):
+        content = read_dailytube_homepage()
+        self.assertTrue(len(content) > 0, 'DailyTube4U.com homepage is up and running')
+
+    def test_channels(self):
+        channels = get_channels()
+        self.assertGreaterEqual(len(channels), 0, 'More than 0 channels are always returned')
+
+    def test_category_sub_categories(self):
+        sub_categories = get_sub_categories(self.PATH_TALKSHOW)
+        self.assertGreaterEqual(len(sub_categories), 10,
+                                'At least more than 10 talkshow sub categories are always returned')
 
 
 class TestSubCategoryParsing(unittest.TestCase):
