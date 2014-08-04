@@ -2,5 +2,8 @@
 *.pyc
 *.zip
 
+# Ignore Package Managers
+node_modules
+
 # IDE's
 .idea
