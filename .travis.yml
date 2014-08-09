@@ -16,5 +16,8 @@ deploy:
   api_key:
     secure: WbJqSl54/WQ++OQlU0EnssMuv/pZhXD4epBVYD4MHNmNbFOpaSD8ELyXIhpa7JUEWEsFziV1JHDpUIn0rokj1qvC23EDrd80knN6AMWnwzHAmN96teVIqJhcnmySx7dk7ObNz7YoBGMvSxuhRqnJ6fyN3yLl6asDfYWw+MrE5+w=
   file: 'plugin.video.dailytube4u.com.zip'
+  skip_cleanup: true
   on:
+    tags: true
+    all_branches: true
     repo: ArabicXBMC/plugin.video.dailytube4u.com
