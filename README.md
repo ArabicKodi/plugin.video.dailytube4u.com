@@ -1,6 +1,8 @@
 DailyTube4U.com
 ===============
 
+[![Build Status](https://travis-ci.org/hadynz/unicode-keymap.svg?branch=master)](https://travis-ci.org/hadynz/unicode-keymap)
+
 #### About the service ####
 Watch a huge variety of OnDemand online Arabic TV streams provided and maintained by dailytube4u.com.
 
