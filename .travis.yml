@@ -1,8 +1,6 @@
 language: python
 python:
-  - "2.7"
-
-# Install Python dependencies (required for running tests)
+- '2.7'
 install: pip install -r requirements.txt
 
 # Discover and run all plugin tests
@@ -11,3 +9,12 @@ script: python -m unittest discover
 # Build and Deploy a new plugin ZIP bundle
 after_success:
 - bash after_success.sh
+
+# Deploy build to GitHub Releases
+deploy:
+  provider: releases
+  api_key:
+    secure: WbJqSl54/WQ++OQlU0EnssMuv/pZhXD4epBVYD4MHNmNbFOpaSD8ELyXIhpa7JUEWEsFziV1JHDpUIn0rokj1qvC23EDrd80knN6AMWnwzHAmN96teVIqJhcnmySx7dk7ObNz7YoBGMvSxuhRqnJ6fyN3yLl6asDfYWw+MrE5+w=
+  file: 'plugin.video.dailytube4u.com.zip'
+  on:
+    repo: ArabicXBMC/plugin.video.dailytube4u.com

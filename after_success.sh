@@ -4,4 +4,4 @@ echo -e "Current Repo:$REPO --- Travis Branch:$TRAVIS_BRANCH"
 
 # Create binary ZIP file
 # Ignore all hidden files, .PSD, tests, node_modules and requirements.txt files
-zip -r plugin.video.dailytube4u.com-2.0.0.zip . -x '*.git*' '\.*' '*/\.*' '*.sh' '*.psd' 'resources/tests/*' '*.pyc' 'requirements.txt' 'node_modules/*'
+zip -r plugin.video.dailytube4u.com.zip . -x '*.git*' '\.*' '*/\.*' '*.sh' '*.psd' 'resources/tests/*' '*.pyc' 'requirements.txt' 'node_modules/*'
