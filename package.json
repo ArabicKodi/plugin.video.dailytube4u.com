@@ -1,0 +1,18 @@
+{
+  "name": "plugin.video.dailytube4u.com",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ArabicXBMC/plugin.video.dailytube4u.com.git"
+  },
+  "author": "Hady Osman <=> (http://hady.geek.nz/)",
+  "license": "MIT",
+  "dependencies": {
+    "q-io": "^1.11.3"
+  },
+  "devDependencies": {
+    "libxmljs": "^0.11.0",
+    "q": "^1.0.1",
+    "shelljs": "^0.3.0",
+    "xml2js": "^0.4.4"
+  }
+}

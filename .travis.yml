@@ -9,6 +9,8 @@ script: python -m unittest discover
 # Build and Deploy a new plugin ZIP bundle
 after_success:
 - bash after_success.sh
+- npm install
+- node tag_version
 
 # Deploy build to GitHub Releases
 deploy:
@@ -21,3 +23,4 @@ deploy:
     tags: true
     all_branches: true
     repo: ArabicXBMC/plugin.video.dailytube4u.com
+    condition: $NEW_BUILD = true
