@@ -21,6 +21,6 @@ deploy:
   skip_cleanup: true
   on:
     tags: true
-    all_branches: true
+    branche: master
     repo: ArabicXBMC/plugin.video.dailytube4u.com
-    condition: $NEW_BUILD = true
+    #condition: $NEW_BUILD = true
