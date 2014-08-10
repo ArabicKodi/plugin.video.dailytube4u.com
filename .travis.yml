@@ -22,12 +22,19 @@ before_script:
 
 # Build and Deploy a new plugin ZIP bundle
 after_success:
+  - git tag -n
   - git remote -v
+  - git tag -n
   - git remote set-url origin "https://github.com/ArabicXBMC/plugin.video.dailytube4u.com.git"
+  - git tag -n
   - git remote -v
+  - git tag -n
   - bash after_success.sh
+  - git tag -n
   - npm install
+  - git tag -n
   - node tag_version
+  - git tag -n
 
 # Deploy build to GitHub Releases
 deploy:
