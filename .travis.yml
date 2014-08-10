@@ -15,6 +15,7 @@ script: python -m unittest discover
 after_success:
   - bash after_success.sh
   - npm install
+  - git remote set-url origin "https://github.com/ArabicXBMC/plugin.video.dailytube4u.com.git"
   - node tag_version
 
 # Deploy build to GitHub Releases
