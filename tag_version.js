@@ -11,7 +11,6 @@ Q()
     .then(readPluginVersion)
     .then(tag)
     .then(pushTags)
-    .then(setSuccessEnvVariable)
     .catch(function(msg){
         console.log(msg || 'release failed')
 //        grunt.fail.warn(msg || 'release failed')
@@ -72,10 +71,4 @@ function tag(versionNumber){
 
 function pushTags(){
     return run('git push --tags');
-}
-
-function setSuccessEnvVariable(){
-    var envKey = 'NEW_BUILD';
-    var envValue = true;
-    return run('$' + envKey + '=' + envValue);
 }
