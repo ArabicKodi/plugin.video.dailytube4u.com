@@ -23,22 +23,22 @@ script:
 
 # Build and Deploy a new plugin ZIP bundle
 before_deploy:
-  - git tag -n
-
-  # Get latest tags from remote
-  - git fetch --tags
-
-  # Get the latest tag name
-  - git describe --tags `git rev-list --tags --max-count=1`
-
-  # Set HTTPS remote origin for repository
-  - git remote set-url origin "https://${GH_TOKEN}@github.com/ArabicXBMC/plugin.video.dailytube4u.com.git"
-
-  # ...
-  - git tag -n
+#  - git tag -n
+#
+#  # Get latest tags from remote
+#  - git fetch --tags
+#
+#  # Get the latest tag name
+#  - git describe --tags `git rev-list --tags --max-count=1`
+#
+#  # Set HTTPS remote origin for repository
+#  - git remote set-url origin "https://${GH_TOKEN}@github.com/ArabicXBMC/plugin.video.dailytube4u.com.git"
+#
+#  # ...
+#  - git tag -n
   - bash after_success.sh
-  - npm install
-  - node tag_version
+#  - npm install
+#  - node tag_version
 
 # Deploy build to GitHub Releases
 deploy:
