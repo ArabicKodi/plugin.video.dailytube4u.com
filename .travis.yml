@@ -1,6 +1,11 @@
 language: python
 python:
-- '2.7'
+  - '2.7'
+
+before_install:
+   # Prevent "Please tell me who you are" errors for certain DZIL configs
+   - git config --global user.name "TravisCI"
+
 install: pip install -r requirements.txt
 
 # Discover and run all plugin tests
@@ -8,9 +13,9 @@ script: python -m unittest discover
 
 # Build and Deploy a new plugin ZIP bundle
 after_success:
-- bash after_success.sh
-- npm install
-- node tag_version
+  - bash after_success.sh
+  - npm install
+  - node tag_version
 
 # Deploy build to GitHub Releases
 deploy:
@@ -21,6 +26,6 @@ deploy:
   skip_cleanup: true
   on:
     tags: true
-    branche: master
+    branch: master
     repo: ArabicXBMC/plugin.video.dailytube4u.com
     #condition: $NEW_BUILD = true
