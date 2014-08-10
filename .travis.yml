@@ -14,14 +14,15 @@ install: pip install -r requirements.txt
 script: python -m unittest discover
 
 after_script:
-  - git config user.name "${GIT_NAME}"
-  - git config user.email "${GIT_EMAIL}"
+  - git config --global user.name "${GIT_NAME}"
+  - git config --global user.email "${GIT_EMAIL}"
   - git config credential.helper "store --file=.git/credentials"
   - echo "https://${GH_TOKEN}:@github.com" > .git/credentials
 #  - node ./node_modules/grunt-cli/bin/grunt release
 
 # Build and Deploy a new plugin ZIP bundle
 after_success:
+  - git remote -v
   - bash after_success.sh
   - npm install
 #  - git remote set-url origin "https://github.com/ArabicXBMC/plugin.video.dailytube4u.com.git"
