@@ -2,6 +2,11 @@ language: python
 python:
   - '2.7'
 
+# Exclude any tag pushes/builds from being picked up by Travis
+branches:
+  except:
+    - /^v[0-9]/
+
 # Setting environment variables that can be used by Git via Travis to identify current user
 env:
   global:
