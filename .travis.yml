@@ -4,8 +4,8 @@ python:
 
 # Exclude any tag pushes/builds from being picked up by Travis
 branches:
-  except:
-    - /^v[0-9]/
+  only:
+      - master
 
 # Setting environment variables that can be used by Git via Travis to identify current user
 env:
@@ -32,7 +32,7 @@ before_deploy:
   - bash after_success.sh
   - git remote set-url origin "https://github.com/ArabicXBMC/plugin.video.dailytube4u.com.git"
   - git fetch --tags
-  - git tag 2.3.0 -m "Tagging from travis configuration"
+  - git tag 2.4.0 -m "Tagging from travis configuration"
   - git push --tags
   - echo $TRAVIS_COMMIT
 
