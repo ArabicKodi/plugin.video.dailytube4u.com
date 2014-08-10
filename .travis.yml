@@ -18,29 +18,31 @@ before_script:
   - git config --global user.email "${GIT_EMAIL}"
   - git config credential.helper "store --file=.git/credentials"
   - echo "https://${GH_TOKEN}:@github.com" > .git/credentials
-#  - node ./node_modules/grunt-cli/bin/grunt release
 
 # Build and Deploy a new plugin ZIP bundle
 after_success:
   - git tag -n
-  - git remote -v
-  - git tag -n
+
+  # Get latest tags from remote
+  - git fetch --tags
+
+  # Get the latest tag name
+  - git describe --tags `git rev-list --tags --max-count=1`
+
+  # Set HTTPS remote origin for repository
   - git remote set-url origin "https://github.com/ArabicXBMC/plugin.video.dailytube4u.com.git"
-  - git tag -n
-  - git remote -v
+
+  # ...
   - git tag -n
   - bash after_success.sh
-  - git tag -n
   - npm install
-  - git tag -n
   - node tag_version
-  - git tag -n
 
 # Deploy build to GitHub Releases
 deploy:
   provider: releases
-  api_key:
-    secure: WbJqSl54/WQ++OQlU0EnssMuv/pZhXD4epBVYD4MHNmNbFOpaSD8ELyXIhpa7JUEWEsFziV1JHDpUIn0rokj1qvC23EDrd80knN6AMWnwzHAmN96teVIqJhcnmySx7dk7ObNz7YoBGMvSxuhRqnJ6fyN3yLl6asDfYWw+MrE5+w=
+  api-key:
+    secure: i+DhcN8WKYhwYkviS72nWc8Y7i4GP11BntvnadQvATbyr2TGrtwd7b3hQLG/srVnSxl8L81E6pzOWST/1Nz1cYr6iiTeAhH+l0ZsTfqzYBEmfnGEmSoeRER0ZmUIPsu/2jLHXPsGGDPPI5k53OPlgeZOhmoeqii/PQpDl7R3lKQ=
   file: plugin.video.dailytube4u.com.zip
   skip_cleanup: true
   on:
