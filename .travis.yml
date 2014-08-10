@@ -34,6 +34,6 @@ deploy:
   skip_cleanup: true
   on:
     all_branches: true
-    tags: true
+#    tags: true
 #    branch: master
     repo: ArabicXBMC/plugin.video.dailytube4u.com
