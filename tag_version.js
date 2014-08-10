@@ -71,7 +71,7 @@ function tag(versionNumber){
 }
 
 function pushTags(){
-    return run('git push origin --tags');
+    return run('git push --tags');
 }
 
 function setSuccessEnvVariable(){
