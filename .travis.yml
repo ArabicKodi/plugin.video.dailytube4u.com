@@ -30,7 +30,7 @@ deploy:
   provider: releases
   api-key:
     secure: i+DhcN8WKYhwYkviS72nWc8Y7i4GP11BntvnadQvATbyr2TGrtwd7b3hQLG/srVnSxl8L81E6pzOWST/1Nz1cYr6iiTeAhH+l0ZsTfqzYBEmfnGEmSoeRER0ZmUIPsu/2jLHXPsGGDPPI5k53OPlgeZOhmoeqii/PQpDl7R3lKQ=
-  file: plugin.video.dailytube4u.com.zip
+  file: "plugin.video.dailytube4u.com-${TRAVIS_BRANCH}.zip"
   skip_cleanup: true
   on:
     all_branches: true
