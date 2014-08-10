@@ -51,17 +51,16 @@ function run(cmd){
     var deferred = Q.defer();
     //grunt.verbose.writeln('Running: ' + cmd);
 
-    var success = shell.exec(cmd, {silent:true}).code === 0;
-
-    if (success){
-//        grunt.log.ok(msg || cmd);
-        console.log('log: ', cmd);
-        deferred.resolve();
-    }
-    else{
-        // fail and stop execution of further tasks
-        deferred.reject('Error: Failed when executing: `' + cmd + '`');
-    }
+    shell.exec(cmd, { silent:true }, function(code, output){
+        if (code === 0) {
+            console.log('log: ', cmd);
+            deferred.resolve();
+        }
+        else {
+            // fail and stop execution of further tasks
+            deferred.reject('Error: Failed when executing: `' + cmd + '`. Error: ' + output);
+        }
+    });
 
     return deferred.promise;
 }
