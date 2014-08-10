@@ -13,7 +13,7 @@ install:
 
 before_script:
   - git config --global user.name "${GIT_NAME}"
-  - git config --global user.email "${GIT_EMAIL}"
+  - git config --global user.email "Travis the Build Bot"
   - git config credential.helper "store --file=.git/credentials"
   - echo "https://${GH_TOKEN}:@github.com" > .git/credentials
 
@@ -26,6 +26,9 @@ before_deploy:
   # Rename script to build_assets.sh
   - bash after_success.sh
   - git fetch --tags
+  - git tag 2.2.0 -m "Tagging from travis configuration"
+  - git push --tags
+  - echo $TRAVIS_COMMIT
 
 # Deploy build to GitHub Releases
 deploy:
