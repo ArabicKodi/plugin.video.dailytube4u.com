@@ -30,13 +30,13 @@ Q()
 function test() {
     return Q.fcall(function () {
         run('echo $GIT_NAME');
-        run('echo $GH_TOKEN');
+        run('echo $GH_TOKEN', true);
     });
 }
 
 function setUser() {
-    return run('git config --global user.name "' + name  + '"');
-    return run('git config --global user.email "' + email  + '"');
+    return run('git config --global user.name "' + name  + '"', true);
+    return run('git config --global user.email "' + email  + '"', true);
 }
 
 function setRemoteUrl() {
@@ -74,18 +74,18 @@ function readPluginVersion(xmlDoc) {
     });
 }
 
-function run(cmd){
-    var deferred = Q.defer();
-    //grunt.verbose.writeln('Running: ' + cmd);
+function run(cmd, silent){
+    var silent = typeof silent !== 'undefined' ? silent : false,
+        deferred = Q.defer();
 
-    shell.exec(cmd, { silent:false }, function(code, output){
+    //grunt.verbose.writeln('Running: ' + cmd);
+    console.log('->', cmd);
+
+    shell.exec(cmd, { silent: silent }, function(code, output){
         if (code === 0) {
-            //console.log('->', cmd);
-            //console.log('#', output);
             deferred.resolve();
         }
         else {
-            // fail and stop execution of further tasks
             deferred.reject('Error: Failed when executing: `' + cmd + '`. Error: ' + output);
         }
     });
