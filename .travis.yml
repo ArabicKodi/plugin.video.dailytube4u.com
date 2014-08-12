@@ -26,11 +26,6 @@ before_deploy:
   # Rename script to build_assets.sh
   - bash after_success.sh
 
-  - git config --global user.name "${GIT_NAME}"
-  - git config --global user.email "Travis the Build Bot"
-  - git config credential.helper "store --file=.git/credentials"
-  - echo "https://${GH_TOKEN}:@github.com" > .git/credentials
-
   - npm install
   - node tag_version.js
 
