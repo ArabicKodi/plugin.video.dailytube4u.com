@@ -6,11 +6,11 @@ var Q = require("q"),
 
 var gitUrl = 'https://github.com/ArabicXBMC/plugin.video.dailytube4u.com.git',
     tagMessage = 'This is a tag message',
-    name= 'Hady Osman',
-    email='hadyos@gmail.com';
+    envName = 'GIT_NAME',
+    envEmail = 'GIT_EMAIL',
+    envToken = 'GH_TOKEN';
 
 Q()
-    .then(test)
     .then(setUser)
     //.then(readPluginConfig)
     //.then(xmlToJson)
@@ -27,17 +27,12 @@ Q()
         console.log('done', arguments);
     });
 
-function test() {
-    return Q.fcall(function () {
-        console.log('shell.env', shell.env);
-        run('echo $GIT_NAME');
-        run('echo $GH_TOKEN', true);
-    });
-}
-
 function setUser() {
+    var name = shell.env[envName],
+        email = shell.env[envEmail];
+
     return run('git config --global user.name "' + name  + '"', true);
-    return run('git config --global user.email "' + email  + '"', true);
+    return run('git config --global user.email "' + shell.env[envToken]  + '"');
 }
 
 function setRemoteUrl() {
@@ -81,10 +76,12 @@ function run(cmd, silent){
 
     //grunt.verbose.writeln('Running: ' + cmd);
 
-    shell.exec(cmd, { silent: silent}, function(code, output){
-        console.log('->', cmd);
-
+    shell.exec(cmd, { silent: true}, function(code, output){
         if (code === 0) {
+            if (!silent) {
+                console.log('->', cmd);
+                console.log('#', output);
+            }
             deferred.resolve();
         }
         else {
