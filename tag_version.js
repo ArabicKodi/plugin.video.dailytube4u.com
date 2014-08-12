@@ -78,10 +78,10 @@ function run(cmd, silent){
 
     shell.exec(cmd, { silent: true}, function(code, output){
         if (code === 0) {
-            if (!silent) {
+            //if (!silent) {
                 console.log('->', cmd);
                 console.log('#', output);
-            }
+            //}
             deferred.resolve();
         }
         else {
