@@ -29,6 +29,7 @@ Q()
 
 function test() {
     return Q.fcall(function () {
+        console.log('shell.env', shell.env);
         run('echo $GIT_NAME');
         run('echo $GH_TOKEN', true);
     });
@@ -79,9 +80,10 @@ function run(cmd, silent){
         deferred = Q.defer();
 
     //grunt.verbose.writeln('Running: ' + cmd);
-    console.log('->', cmd);
 
-    shell.exec(cmd, { silent: silent }, function(code, output){
+    shell.exec(cmd, { silent: silent}, function(code, output){
+        console.log('->', cmd);
+
         if (code === 0) {
             deferred.resolve();
         }
