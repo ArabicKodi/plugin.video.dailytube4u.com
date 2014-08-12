@@ -41,7 +41,7 @@ deploy:
   skip_cleanup: true
   on:
     all_branches: true
-    condition: -f plugin*.zip
+    condition: -f *.zip
 #    tags: true
 #    branch: master
     repo: ArabicXBMC/plugin.video.dailytube4u.com
