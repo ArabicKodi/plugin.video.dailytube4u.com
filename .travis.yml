@@ -28,6 +28,7 @@ before_deploy:
 
   - npm install
   - node tag_version.js
+  - echo $NEW_PLUGIN_VERSION
 
 # Deploy build to GitHub Releases
 deploy:

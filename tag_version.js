@@ -8,7 +8,8 @@ var gitUrl = 'https://github.com/ArabicXBMC/plugin.video.dailytube4u.com.git',
     tagMessage = 'This is a tag message',
     envName = 'GIT_NAME',
     envEmail = 'GIT_EMAIL',
-    envToken = 'GH_TOKEN';
+    envToken = 'GH_TOKEN',
+    envXBMCPluginVersion = 'NEW_PLUGIN_VERSION';
 
 Q()
 
@@ -16,12 +17,15 @@ Q()
     //.then(xmlToJson)
     //.then(readPluginVersion)
 
-    .then(setUserInfo)
-    .then(writeGitCredentials)
-    .then(setRemoteUrl)
-    .then(fetchTags)
-    .then(tag)
-    .then(pushTags)
+//    .then(setUserInfo)
+//    .then(writeGitCredentials)
+//    .then(setRemoteUrl)
+//    .then(fetchTags)
+//    .then(tag)
+//    .then(pushTags)
+
+    .then(writeEnv)
+
     .catch(function(msg){
         console.log(msg || 'release failed')
 //        grunt.fail.warn(msg || 'release failed')
@@ -59,13 +63,19 @@ function readPluginVersion(xmlDoc) {
     });
 }
 
+function writeEnv() {
+    return Q.fcall(function () {
+        return shell.env[envXBMCPluginVersion] = '5.0.0';
+    });
+}
+
 function run(cmd, silent){
     var silent = typeof silent !== 'undefined' ? silent : false,
         deferred = Q.defer();
 
     //grunt.verbose.writeln('Running: ' + cmd);
 
-    shell.exec(cmd, { silent: true}, function(code, output){
+    shell.exec(cmd, { silent: false }, function(code, output){
         if (code === 0) {
             console.log('->', cmd);
             console.log('#', output);
