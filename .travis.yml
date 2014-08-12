@@ -21,10 +21,12 @@ install:
 script:
   - python -m unittest discover
 
+after_script:
+  - bash after_success.sh
+
 # Build and Deploy a new plugin ZIP bundle
 before_deploy:
   # Rename script to build_assets.sh
-  - bash after_success.sh
 
   #- npm install
   #- node tag_version.js
