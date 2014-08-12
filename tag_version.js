@@ -78,10 +78,10 @@ function run(cmd){
     var deferred = Q.defer();
     //grunt.verbose.writeln('Running: ' + cmd);
 
-    shell.exec(cmd, { silent:true }, function(code, output){
+    shell.exec(cmd, { silent:false }, function(code, output){
         if (code === 0) {
-            console.log('->', cmd);
-            console.log('#', output);
+            //console.log('->', cmd);
+            //console.log('#', output);
             deferred.resolve();
         }
         else {
