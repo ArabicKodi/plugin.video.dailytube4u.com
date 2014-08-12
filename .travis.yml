@@ -33,7 +33,7 @@ before_deploy:
 
   - git remote set-url origin "https://github.com/ArabicXBMC/plugin.video.dailytube4u.com.git"
   - git fetch --tags
-  - git tag 2.3.0 -m "Tagging from travis configuration"
+  - git tag 2.3.1 -m "Tagging from travis configuration"
   - git push --tags
   - echo $TRAVIS_COMMIT
 
