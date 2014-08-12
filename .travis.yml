@@ -41,7 +41,7 @@ deploy:
   skip_cleanup: true
   on:
     all_branches: true
-    condition: test -f *.zip
+    condition: -n "$(find . -maxdepth 1 -name '*zip')"
 #    tags: true
 #    branch: master
     repo: ArabicXBMC/plugin.video.dailytube4u.com
