@@ -4,11 +4,15 @@ var Q = require("q"),
     shell = require('shelljs'),
     pluginConfigFile = 'addon.xml';
 
+var gitUrl = 'https://github.com/ArabicXBMC/plugin.video.dailytube4u.com.git',
+    tagMessage = 'This is a tag message';
 
 Q()
-    .then(readPluginConfig)
-    .then(xmlToJson)
-    .then(readPluginVersion)
+    .then(setRemoteUrl)
+    .then(fetchTags)
+    //.then(readPluginConfig)
+    //.then(xmlToJson)
+    //.then(readPluginVersion)
     .then(tag)
     .then(pushTags)
     .catch(function(msg){
@@ -18,6 +22,14 @@ Q()
     .done(function(){
         console.log('done', arguments);
     });
+
+function setRemoteUrl() {
+    return run('git remote set-url origin ' + gitUrl);
+}
+
+function fetchTags() {
+    return run('git fetch --tags');
+}
 
 function readPluginConfig() {
     return Q.fcall(function () {
@@ -65,10 +77,10 @@ function run(cmd){
 }
 
 function tag(versionNumber){
-    var tagMessage = 'This is a tag message';
+    versionNumber = '2.3.2';
     return run('git tag ' + versionNumber + ' -m "'+ tagMessage +'"');
 }
 
 function pushTags(){
-    return run('git push origin --tags');
+    return run('git push --tags');
 }

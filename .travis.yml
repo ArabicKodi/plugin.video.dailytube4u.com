@@ -31,11 +31,7 @@ before_deploy:
   - git config credential.helper "store --file=.git/credentials"
   - echo "https://${GH_TOKEN}:@github.com" > .git/credentials
 
-  - git remote set-url origin "https://github.com/ArabicXBMC/plugin.video.dailytube4u.com.git"
-  - git fetch --tags
-  - git tag 2.3.1 -m "Tagging from travis configuration"
-  - git push --tags
-  - echo $TRAVIS_COMMIT
+  - node tag_version.js
 
 # Deploy build to GitHub Releases
 deploy:
