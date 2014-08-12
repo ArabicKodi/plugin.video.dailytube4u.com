@@ -5,16 +5,20 @@ var Q = require("q"),
     pluginConfigFile = 'addon.xml';
 
 var gitUrl = 'https://github.com/ArabicXBMC/plugin.video.dailytube4u.com.git',
-    tagMessage = 'This is a tag message';
+    tagMessage = 'This is a tag message',
+    name= 'Hady Osman',
+    email='hadyos@gmail.com';
 
 Q()
-    .then(setRemoteUrl)
-    .then(fetchTags)
+    .then(test)
+    .then(setUser)
     //.then(readPluginConfig)
     //.then(xmlToJson)
     //.then(readPluginVersion)
-    .then(tag)
-    .then(pushTags)
+    //.then(setRemoteUrl)
+    //.then(fetchTags)
+    //.then(tag)
+    //.then(pushTags)
     .catch(function(msg){
         console.log(msg || 'release failed')
 //        grunt.fail.warn(msg || 'release failed')
@@ -22,6 +26,18 @@ Q()
     .done(function(){
         console.log('done', arguments);
     });
+
+function test() {
+    return Q.fcall(function () {
+        run('echo $GIT_NAME');
+        run('echo $GH_TOKEN');
+    });
+}
+
+function setUser() {
+    return run('git config --global user.name "' + name  + '"');
+    return run('git config --global user.email "' + email  + '"');
+}
 
 function setRemoteUrl() {
     return run('git remote set-url origin ' + gitUrl);
@@ -64,7 +80,8 @@ function run(cmd){
 
     shell.exec(cmd, { silent:true }, function(code, output){
         if (code === 0) {
-            console.log('log: ', cmd);
+            console.log('->', cmd);
+            console.log('#', output);
             deferred.resolve();
         }
         else {
