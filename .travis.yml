@@ -20,6 +20,7 @@ install:
 # Discover and run all plugin tests
 script:
   - python -m unittest discover
+  - touch hello.zip
 
 after_script:
   - bash after_success.sh
