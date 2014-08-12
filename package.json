@@ -7,8 +7,9 @@
   "author": "Hady Osman <=> (http://hady.geek.nz/)",
   "license": "MIT",
   "dependencies": {
-    "q-io": "^1.11.3",
+    "env-variable": "0.0.0",
     "q": "^1.0.1",
+    "q-io": "^1.11.3",
     "shelljs": "^0.3.0",
     "xml2js": "^0.4.4"
   }

@@ -2,6 +2,7 @@ var Q = require("q"),
     fs = require("q-io/fs"),
     parseString = require('xml2js').parseString,
     shell = require('shelljs'),
+    env = require('env-variable'),
     pluginConfigFile = 'addon.xml';
 
 var gitUrl = 'https://github.com/ArabicXBMC/plugin.video.dailytube4u.com.git',
@@ -65,7 +66,7 @@ function readPluginVersion(xmlDoc) {
 
 function writeEnv() {
     return Q.fcall(function () {
-        return shell.env[envXBMCPluginVersion] = '5.0.0';
+        run('touch .semaphore');
     });
 }
 

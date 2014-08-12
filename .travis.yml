@@ -26,9 +26,8 @@ before_deploy:
   # Rename script to build_assets.sh
   - bash after_success.sh
 
-  - npm install
-  - node tag_version.js
-  - echo $NEW_PLUGIN_VERSION
+  #- npm install
+  #- node tag_version.js
 
 # Deploy build to GitHub Releases
 deploy:
@@ -39,6 +38,7 @@ deploy:
   skip_cleanup: true
   on:
     all_branches: true
+    condition: -f plugin*.zip
 #    tags: true
 #    branch: master
     repo: ArabicXBMC/plugin.video.dailytube4u.com
