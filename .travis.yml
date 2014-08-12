@@ -20,10 +20,10 @@ install:
 # Discover and run all plugin tests
 script:
   - python -m unittest discover
-  - touch hello.zip
+  #- touch hello.zip
 
 after_script:
-  - bash after_success.sh
+  #- bash after_success.sh
 
 # Build and Deploy a new plugin ZIP bundle
 before_deploy:
